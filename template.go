@@ -20,6 +20,10 @@ func New(name string, options ...Option) (*texttemplate.Template, error) {
 	return tmpl, nil
 }
 
+func Must(t *texttemplate.Template, err error) *texttemplate.Template {
+	return texttemplate.Must(t, err)
+}
+
 func Funcs(funcMap FuncMap) Option {
 	return func(t *texttemplate.Template) error {
 		t.Funcs(texttemplate.FuncMap(funcMap))
